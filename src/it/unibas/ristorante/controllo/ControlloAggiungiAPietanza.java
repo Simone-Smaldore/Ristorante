@@ -40,22 +40,40 @@ public class ControlloAggiungiAPietanza {
             Ingrediente ingrediente = archivio.cercaIngredientePerNome(Applicazione.getInstance().getPannelloAggiungiAPietanza().getSelectedValue());
             int numQuantita = 0;
             String quantita = Applicazione.getInstance().getPannelloAggiungiAPietanza().getjTextFieldQuantita().getText();
-            if(pietanza.contieneIngrediente(ingrediente)) {
-                Applicazione.getInstance().getPannelloAggiungiAPietanza().mostraMessaggioErrore("Ingrediente già presente nella pietanza");
-                return;
-            }
-            try {
-                numQuantita = Integer.parseInt(quantita);
-            } catch (IllegalArgumentException ex) {
-                Applicazione.getInstance().getPannelloAggiungiAPietanza().mostraMessaggioErrore("La quantità deve essere un numero");
-                return;
-            }
-            if (numQuantita <= 0) {
-                Applicazione.getInstance().getPannelloAggiungiAPietanza().mostraMessaggioErrore("La quantita deve essere maggiore di 0");
+            String errori = trovaErrori();
+            if (!errori.isEmpty()) {
+                Applicazione.getInstance().getPannelloAggiungiAPietanza().mostraMessaggioErrore(errori);
                 return;
             }
             pietanza.addIngrediente(new IngredienteQuantita(numQuantita, ingrediente));
             Applicazione.getInstance().getPannelloAggiungiAPietanza().setVisible(false);
+
+        }
+
+        private String trovaErrori() {
+            Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
+            Pietanza pietanza = archivio.cercaPietanzaPerCodice(Applicazione.getInstance().getPannelloPrincipale().getCampoRicerca());
+            Ingrediente ingrediente = archivio.cercaIngredientePerNome(Applicazione.getInstance().getPannelloAggiungiAPietanza().getSelectedValue());
+            String errori = "";
+            String quantita = Applicazione.getInstance().getPannelloAggiungiAPietanza().getjTextFieldQuantita().getText();
+            int numQuantita = 0;
+            if (quantita.isEmpty()) {
+                errori = errori + "Inserire un valore per la quantita\n";
+                return errori;
+            }
+            if (pietanza.contieneIngrediente(ingrediente)) {
+                errori = errori + "Ingrediente già presente nella pietanza\n";
+            }
+            try {
+                numQuantita = Integer.parseInt(quantita);
+            } catch (IllegalArgumentException ex) {
+                errori = errori + "La quantità deve essere un numero\n";
+                return errori;
+            }
+            if (numQuantita <= 0) {
+                errori = errori + "La quantita deve essere maggiore di 0";
+            }
+            return errori;
         }
     }
 

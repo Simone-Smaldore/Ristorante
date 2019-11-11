@@ -39,6 +39,7 @@ public class PannelloAggiungiAPietanza extends javax.swing.JDialog {
 
     public void initActions() {
         this.jButtonAggiungiAPietanza.setAction(Applicazione.getInstance().getControlloAggiungiAPietanza().getAzioneAggiungi());
+        this.jTextFieldQuantita.setAction(Applicazione.getInstance().getControlloAggiungiAPietanza().getAzioneAggiungi());
     }
 
     public void visualizza() {
