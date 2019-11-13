@@ -31,6 +31,7 @@ public class Frame extends javax.swing.JFrame {
         jMenuFile = new javax.swing.JMenu();
         jMenuEsci = new javax.swing.JMenuItem();
         jMenuItemCarica = new javax.swing.JMenuItem();
+        jMenuItemTrovaCaloricamenteSimile = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
         jMenuItemHelp = new javax.swing.JMenuItem();
 
@@ -43,6 +44,9 @@ public class Frame extends javax.swing.JFrame {
 
         jMenuItemCarica.setText("Carica");
         jMenuFile.add(jMenuItemCarica);
+
+        jMenuItemTrovaCaloricamenteSimile.setText("jMenuItem1");
+        jMenuFile.add(jMenuItemTrovaCaloricamenteSimile);
 
         jMenuBar1.add(jMenuFile);
 
@@ -75,12 +79,18 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuItemCarica;
     private javax.swing.JMenuItem jMenuItemHelp;
+    private javax.swing.JMenuItem jMenuItemTrovaCaloricamenteSimile;
     // End of variables declaration//GEN-END:variables
 
     private void initAction() {
         this.jMenuEsci.setAction(Applicazione.getInstance().getControlloFrame().getAzioneEsci());
         this.jMenuItemHelp.setAction(Applicazione.getInstance().getControlloFrame().getAzioneHelp());
         this.jMenuItemCarica.setAction(Applicazione.getInstance().getControlloFrame().getAzioneCarica());
+        this.jMenuItemTrovaCaloricamenteSimile.setAction(Applicazione.getInstance().getControlloFrame().getAzioneTrovaSimile());
+    }
+    
+    public void abilitaMenuTrova() {
+        this.jMenuItemTrovaCaloricamenteSimile.setEnabled(true);
     }
 
     public void mostraMessaggioErrori(String errori) {

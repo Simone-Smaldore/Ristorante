@@ -102,6 +102,7 @@ public class ControlloPannelloPrincipale {
             Applicazione.getInstance().getModello().addBean(Costanti.PIETANZA_CORRENTE, pietanzaTrovata);
             Applicazione.getInstance().getPannelloPrincipale().settaPietanza(pietanzaTrovata.getNome(), pietanzaTrovata.contieneAllergeni(), pietanzaTrovata.getCosto());
             Applicazione.getInstance().getPannelloPrincipale().abilitaBottoneAggiungiAPietanza();
+            Applicazione.getInstance().getFrame().abilitaMenuTrova();
         }
         
         private String controllaErrori(String codice) {

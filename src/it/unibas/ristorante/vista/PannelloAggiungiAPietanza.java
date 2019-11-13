@@ -9,6 +9,7 @@ import it.unibas.ristorante.Applicazione;
 import it.unibas.ristorante.Costanti;
 import it.unibas.ristorante.modello.Archivio;
 import it.unibas.ristorante.modello.Ingrediente;
+import it.unibas.ristorante.modello.Pietanza;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JComboBox;
@@ -49,9 +50,10 @@ public class PannelloAggiungiAPietanza extends javax.swing.JDialog {
     }
 
     private void initNameComponents() {
-        this.jLabelNome.setText(Applicazione.getInstance().getPannelloPrincipale().getjLabelNome().getText());
-        this.jLabelAllergeni.setText(Applicazione.getInstance().getPannelloPrincipale().getjLabelAllergeni().getText());
-        this.jLabelCosto.setText(Applicazione.getInstance().getPannelloPrincipale().getjLabelCosto().getText());
+        Pietanza pietanza = (Pietanza) Applicazione.getInstance().getModello().getBean(Costanti.PIETANZA_CORRENTE);
+        this.jLabelNome.setText(pietanza.getNome());
+        this.jLabelAllergeni.setText(pietanza.contieneAllergeni() ? "presenti" : "non presenti");
+        this.jLabelCosto.setText("" + pietanza.getCosto());
         this.jComboBoxIngredienti.removeAllItems();
         Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
         List<Ingrediente> ingredienti = archivio.getIngredienti();

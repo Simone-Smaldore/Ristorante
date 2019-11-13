@@ -23,6 +23,10 @@ public class Archivio {
         return ingredienti;
     }
 
+    public int getNumeroPietanze() {
+        return this.pietanze.size();
+    }
+
     public void addPietanza(Pietanza pietanza) {
         this.pietanze.add(pietanza);
     }
@@ -47,6 +51,22 @@ public class Archivio {
             }
         }
         return null;
+    }
+
+    public Pietanza trovaPietanzaCaloricamenteSimile(Pietanza p) {
+        Pietanza simile = null;
+        int min = Integer.MAX_VALUE;
+        for (Pietanza pietanza : pietanze) {
+            if(p.equals(pietanza)) {
+                continue;
+            }
+            int diff = Math.abs(pietanza.getCalorie() - p.getCalorie());
+            if (diff < min) {
+                min = diff;
+                simile = pietanza;
+            }
+        }
+        return simile;
     }
 
 }

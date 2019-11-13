@@ -39,3 +39,4 @@ dist/Ristorante.jar
 nbproject/private/private.properties
 nbproject/private/private.xml
 build/classes/it/unibas/ristorante/controllo/ControlloFrame$AzioneHelp.class
+build/classes/it/unibas/ristorante/controllo/ControlloFrame$AzioneTrovaCaloricamenteSimile.class
