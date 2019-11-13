@@ -32,6 +32,7 @@ public class Frame extends javax.swing.JFrame {
         jMenuEsci = new javax.swing.JMenuItem();
         jMenuItemCarica = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
+        jMenuItemHelp = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,6 +47,10 @@ public class Frame extends javax.swing.JFrame {
         jMenuBar1.add(jMenuFile);
 
         jMenuHelp.setText("?");
+
+        jMenuItemHelp.setText("jMenuItem1");
+        jMenuHelp.add(jMenuItemHelp);
+
         jMenuBar1.add(jMenuHelp);
 
         setJMenuBar(jMenuBar1);
@@ -69,15 +74,20 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenu jMenuHelp;
     private javax.swing.JMenuItem jMenuItemCarica;
+    private javax.swing.JMenuItem jMenuItemHelp;
     // End of variables declaration//GEN-END:variables
 
     private void initAction() {
         this.jMenuEsci.setAction(Applicazione.getInstance().getControlloFrame().getAzioneEsci());
+        this.jMenuItemHelp.setAction(Applicazione.getInstance().getControlloFrame().getAzioneHelp());
         this.jMenuItemCarica.setAction(Applicazione.getInstance().getControlloFrame().getAzioneCarica());
-        
     }
 
     public void mostraMessaggioErrori(String errori) {
         JOptionPane.showMessageDialog(this, errori, "Errore", JOptionPane.ERROR_MESSAGE);
+    }
+    
+    public void mostraMessaggioInformazioni(String info) {
+        JOptionPane.showMessageDialog(this, info, "Info", JOptionPane.INFORMATION_MESSAGE);
     }
 }
