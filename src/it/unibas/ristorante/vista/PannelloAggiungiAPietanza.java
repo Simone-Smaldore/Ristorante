@@ -65,10 +65,6 @@ public class PannelloAggiungiAPietanza extends javax.swing.JDialog {
         return jTextFieldQuantita;
     }
 
-    public JComboBox<String> getjComboBoxIngredienti() {
-        return jComboBoxIngredienti;
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -78,16 +74,16 @@ public class PannelloAggiungiAPietanza extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
         jLabelAllergeni = new javax.swing.JLabel();
         jLabelCosto = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
         jComboBoxIngredienti = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
         jTextFieldQuantita = new javax.swing.JTextField();
         jButtonAggiungiAPietanza = new javax.swing.JButton();
 
@@ -249,15 +245,9 @@ public class PannelloAggiungiAPietanza extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAggiungiAPietanza;
     private javax.swing.JComboBox<String> jComboBoxIngredienti;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAllergeni;
     private javax.swing.JLabel jLabelCosto;
     private javax.swing.JLabel jLabelNome;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldQuantita;
     // End of variables declaration//GEN-END:variables
 

@@ -36,7 +36,7 @@ public class ControlloAggiungiAPietanza {
         @Override
         public void actionPerformed(ActionEvent e) {
             Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
-            Pietanza pietanza = archivio.cercaPietanzaPerCodice(Applicazione.getInstance().getPannelloPrincipale().getCampoRicerca());
+            Pietanza pietanza = (Pietanza) Applicazione.getInstance().getModello().getBean(Costanti.PIETANZA_CORRENTE);
             Ingrediente ingrediente = archivio.cercaIngredientePerNome(Applicazione.getInstance().getPannelloAggiungiAPietanza().getSelectedValue());
             int numQuantita = 0;
             String quantita = Applicazione.getInstance().getPannelloAggiungiAPietanza().getjTextFieldQuantita().getText();

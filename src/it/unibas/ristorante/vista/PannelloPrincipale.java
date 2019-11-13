@@ -51,17 +51,17 @@ public class PannelloPrincipale extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+        javax.swing.JLabel jLabel1 = new javax.swing.JLabel();
         jTextFieldCodice = new javax.swing.JTextField();
         jButtonRicerca = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+        javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
         jLabelNome = new javax.swing.JLabel();
         jLabelAllergeni = new javax.swing.JLabel();
         jLabelCosto = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        javax.swing.JPanel jPanel2 = new javax.swing.JPanel();
         jButtonAggiungiIngrediente = new javax.swing.JButton();
         jButtonAggiungiAPietanza = new javax.swing.JButton();
 
@@ -108,7 +108,6 @@ public class PannelloPrincipale extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Aggiungi Ingrediente"));
 
         jButtonAggiungiIngrediente.setText("Aggiungi nuovo all'archivio");
-        jButtonAggiungiIngrediente.setActionCommand("Aggiungi nuovo all'archivio");
 
         jButtonAggiungiAPietanza.setText("Aggiungi da archivio a pietanza");
         jButtonAggiungiAPietanza.setActionCommand("Aggiungi ingrediente");
@@ -191,15 +190,9 @@ public class PannelloPrincipale extends javax.swing.JPanel {
     private javax.swing.JButton jButtonAggiungiAPietanza;
     private javax.swing.JButton jButtonAggiungiIngrediente;
     private javax.swing.JButton jButtonRicerca;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelAllergeni;
     private javax.swing.JLabel jLabelCosto;
     private javax.swing.JLabel jLabelNome;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField jTextFieldCodice;
     // End of variables declaration//GEN-END:variables
 
