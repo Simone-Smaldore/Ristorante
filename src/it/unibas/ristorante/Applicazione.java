@@ -5,6 +5,7 @@ import it.unibas.ristorante.controllo.ControlloAggiungiAdArchivio;
 import it.unibas.ristorante.controllo.ControlloFrame;
 import it.unibas.ristorante.controllo.ControlloPannelloPrincipale;
 import it.unibas.ristorante.modello.Modello;
+import it.unibas.ristorante.persistenza.DAOArchivio;
 import it.unibas.ristorante.persistenza.DAOArchivioMock;
 import it.unibas.ristorante.persistenza.IDAOArchivio;
 import it.unibas.ristorante.vista.Frame;
@@ -31,6 +32,7 @@ public class Applicazione {
     private ControlloAggiungiAdArchivio controlloAggiungiAdArchivio;
     private PannelloAggiungiAPietanza pannelloAggiungiAPietanza;
     private ControlloAggiungiAPietanza controlloAggiungiAPietanza;
+    private DAOArchivio daoArchivioVero;
 
     private Applicazione() {
     }
@@ -40,6 +42,7 @@ public class Applicazione {
     }
 
     public void inizializza() {
+        this.daoArchivioVero = new DAOArchivio();
         this.daoArchivio = new DAOArchivioMock();
         this.modello = new Modello();
         this.controlloFrame = new ControlloFrame();
@@ -63,6 +66,10 @@ public class Applicazione {
 
     public ControlloPannelloPrincipale getControlloPrincipale() {
         return controlloPrincipale;
+    }
+
+    public DAOArchivio getDAOArchivioVero() {
+        return daoArchivioVero;
     }
 
     public IDAOArchivio getDAOArchivio() {

@@ -7,8 +7,10 @@ import it.unibas.ristorante.modello.Pietanza;
 import it.unibas.ristorante.persistenza.DAOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JFileChooser;
 import javax.swing.KeyStroke;
 
 /**
@@ -52,14 +54,14 @@ public class ControlloFrame {
         public void actionPerformed(ActionEvent e) {
             Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
             Pietanza pietanza = (Pietanza) Applicazione.getInstance().getModello().getBean(Costanti.PIETANZA_CORRENTE);
-            if(archivio.getNumeroPietanze() == 1) {
+            if (archivio.getNumeroPietanze() == 1) {
                 Applicazione.getInstance().getFrame().mostraMessaggioInformazioni("Nell'archivio è presente solo la \npietanza selezionata");
                 return;
             }
             Pietanza simile = archivio.trovaPietanzaCaloricamenteSimile(pietanza);
-            Applicazione.getInstance().getFrame().mostraMessaggioInformazioni("Pietanza caloricamente più simile a quella selezionata\n\n"+
-                    "Nome : " + simile.getNome() + "\nAllergeni: " + (simile.contieneAllergeni() ? "presenti" : "non presenti") + "\n"
-                            + "Costo : " + simile.getCosto());
+            Applicazione.getInstance().getFrame().mostraMessaggioInformazioni("Pietanza caloricamente più simile a quella selezionata\n\n"
+                    + "Nome : " + simile.getNome() + "\nAllergeni: " + (simile.contieneAllergeni() ? "presenti" : "non presenti") + "\n"
+                    + "Costo : " + simile.getCosto());
         }
 
     }
@@ -91,15 +93,31 @@ public class ControlloFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            try {
-                Archivio archivio = Applicazione.getInstance().getDAOArchivio().caricaArchivio("");
-                Applicazione.getInstance().getModello().addBean(Costanti.ARCHIVIO, archivio);
-                this.setEnabled(false);
-                Applicazione.getInstance().getPannelloPrincipale().abilitaComponenti();
-            } catch (DAOException ex) {
-                Applicazione.getInstance().getFrame().mostraMessaggioErrori("Problemi con il caricamento");
+            String nomeFile = acquisisciFile();
+            if (nomeFile != null) {
+                try {
+                    Archivio archivio = Applicazione.getInstance().getDAOArchivioVero().caricaArchivio(nomeFile);
+                    Applicazione.getInstance().getModello().addBean(Costanti.ARCHIVIO, archivio);
+                    Applicazione.getInstance().getPannelloPrincipale().abilitaComponenti();
+                    //Applicazione.getInstance().getDaoArchivioVero().salvaArchivio(archivio, "Prova.json");
+                } catch (DAOException ex) {
+                    Applicazione.getInstance().getFrame().mostraMessaggioErrori("Problemi con il caricamento");
+                }
             }
         }
+
+        private String acquisisciFile() {
+            JFileChooser fileChooser = Applicazione.getInstance().getFrame().getFileChooser();
+            int codice = fileChooser.showOpenDialog(Applicazione.getInstance().getFrame());
+            if (codice == JFileChooser.APPROVE_OPTION) {
+                File file = fileChooser.getSelectedFile();
+                return file.toString();
+            } else if (codice == JFileChooser.CANCEL_OPTION) {
+                //logger
+            }
+            return null;
+        }
+
     }
 
     private class AzioneEsci extends AbstractAction {

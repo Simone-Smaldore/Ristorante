@@ -1,6 +1,8 @@
 package it.unibas.ristorante.vista;
 
 import it.unibas.ristorante.Applicazione;
+import java.io.File;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
@@ -12,10 +14,17 @@ public class Frame extends javax.swing.JFrame {
 
     public Frame() {
     }
-    
+
+    private final JFileChooser fileChooser = new JFileChooser();
+
+    public JFileChooser getFileChooser() {
+        return fileChooser;
+    }
+
     public void inizializza() {
         initComponents();
         initAction();
+        this.fileChooser.setFileFilter(new TxtFileFilter());
         //occhio a jscrollPane
         this.setContentPane(new JScrollPane(Applicazione.getInstance().getPannelloPrincipale()));
         this.pack();
@@ -88,7 +97,7 @@ public class Frame extends javax.swing.JFrame {
         this.jMenuItemCarica.setAction(Applicazione.getInstance().getControlloFrame().getAzioneCarica());
         this.jMenuItemTrovaCaloricamenteSimile.setAction(Applicazione.getInstance().getControlloFrame().getAzioneTrovaSimile());
     }
-    
+
     public void abilitaMenuTrova() {
         this.jMenuItemTrovaCaloricamenteSimile.setEnabled(true);
     }
@@ -96,8 +105,24 @@ public class Frame extends javax.swing.JFrame {
     public void mostraMessaggioErrori(String errori) {
         JOptionPane.showMessageDialog(this, errori, "Errore", JOptionPane.ERROR_MESSAGE);
     }
-    
+
     public void mostraMessaggioInformazioni(String info) {
         JOptionPane.showMessageDialog(this, info, "Info", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    private class TxtFileFilter extends javax.swing.filechooser.FileFilter {
+
+        @Override
+        public boolean accept(File pathname) {
+            if (pathname.isDirectory()) {
+                return true;
+            }
+            return pathname.toString().endsWith("json");
+        }
+
+        @Override
+        public String getDescription() {
+            return "*" + "json";
+        }
     }
 }

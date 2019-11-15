@@ -40,3 +40,6 @@ nbproject/private/private.properties
 nbproject/private/private.xml
 build/classes/it/unibas/ristorante/controllo/ControlloFrame$AzioneHelp.class
 build/classes/it/unibas/ristorante/controllo/ControlloFrame$AzioneTrovaCaloricamenteSimile.class
+build/classes/it/unibas/ristorante/persistenza/DAOArchivio.class
+build/classes/it/unibas/ristorante/vista/Frame$TxtFileFilter.class
+Prova.json
