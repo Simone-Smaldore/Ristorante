@@ -8,7 +8,7 @@ import java.util.Objects;
  *
  * @author Simone
  */
-public class Pietanza {
+public class Pietanza implements Comparable<Pietanza>{
 
     private String nome;
     private double costo;
@@ -90,6 +90,11 @@ public class Pietanza {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public int compareTo(Pietanza o) {
+        return this.getCalorie() - o.getCalorie();
     }
 
 }

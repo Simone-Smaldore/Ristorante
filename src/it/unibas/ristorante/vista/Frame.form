@@ -25,7 +25,12 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="jMenuItemTrovaCaloricamenteSimile">
               <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+                <Property name="text" type="java.lang.String" value="Trova simile"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemMostraPietanze">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Mostra Pietanze"/>
               </Properties>
             </MenuItem>
           </SubComponents>

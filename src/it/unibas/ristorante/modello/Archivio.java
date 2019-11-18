@@ -23,6 +23,10 @@ public class Archivio {
         return ingredienti;
     }
 
+    public List<Pietanza> getPietanze() {
+        return pietanze;
+    }
+
     public int getNumeroPietanze() {
         return this.pietanze.size();
     }
@@ -57,7 +61,7 @@ public class Archivio {
         Pietanza simile = null;
         int min = Integer.MAX_VALUE;
         for (Pietanza pietanza : pietanze) {
-            if(p.equals(pietanza)) {
+            if (p.equals(pietanza)) {
                 continue;
             }
             int diff = Math.abs(pietanza.getCalorie() - p.getCalorie());

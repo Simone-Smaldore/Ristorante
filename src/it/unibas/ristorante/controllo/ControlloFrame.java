@@ -8,6 +8,8 @@ import it.unibas.ristorante.persistenza.DAOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.util.Collections;
+import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JFileChooser;
@@ -23,6 +25,11 @@ public class ControlloFrame {
     private Action azioneCarica = new AzioneCarica();
     private Action azioneHelp = new AzioneHelp();
     private Action azioneTrovaSimile = new AzioneTrovaCaloricamenteSimile();
+    private Action azioneMostraPietanze = new AzioneMostraPietanze();
+
+    public Action getAzioneMostraPietanze() {
+        return azioneMostraPietanze;
+    }
 
     public Action getAzioneCarica() {
         return azioneCarica;
@@ -38,6 +45,32 @@ public class ControlloFrame {
 
     public Action getAzioneTrovaSimile() {
         return azioneTrovaSimile;
+    }
+
+    private class AzioneMostraPietanze extends AbstractAction {
+
+        public AzioneMostraPietanze() {
+            this.putValue(NAME, "Mostra pietanze");
+            this.putValue(SHORT_DESCRIPTION, "Mostra una tabella contenente le pietanze dell' archivio");
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl + T"));
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_T);
+            this.setEnabled(false);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
+            if(archivio.getNumeroPietanze() == 0) {
+                Applicazione.getInstance().getFrame().mostraMessaggioErrori("Non ci sono pietanze da mostrare nell'archivio");
+                return;
+            }
+            List<Pietanza> pietanze = archivio.getPietanze();
+            Collections.sort(pietanze);
+            Applicazione.getInstance().getModello().addBean(Costanti.LISTA_PIETANZE, pietanze);
+            Applicazione.getInstance().getFinetraTabella().aggiornaTabella();
+            Applicazione.getInstance().getFinetraTabella().visualizza();
+        }
+
     }
 
     private class AzioneTrovaCaloricamenteSimile extends AbstractAction {
@@ -99,7 +132,7 @@ public class ControlloFrame {
                     Archivio archivio = Applicazione.getInstance().getDAOArchivioVero().caricaArchivio(nomeFile);
                     Applicazione.getInstance().getModello().addBean(Costanti.ARCHIVIO, archivio);
                     Applicazione.getInstance().getPannelloPrincipale().abilitaComponenti();
-                    //Applicazione.getInstance().getDaoArchivioVero().salvaArchivio(archivio, "Prova.json");
+                    Applicazione.getInstance().getFrame().abilitaMostraPietanze();
                 } catch (DAOException ex) {
                     Applicazione.getInstance().getFrame().mostraMessaggioErrori("Problemi con il caricamento");
                 }

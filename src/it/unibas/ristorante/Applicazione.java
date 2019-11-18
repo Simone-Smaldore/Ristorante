@@ -8,6 +8,7 @@ import it.unibas.ristorante.modello.Modello;
 import it.unibas.ristorante.persistenza.DAOArchivio;
 import it.unibas.ristorante.persistenza.DAOArchivioMock;
 import it.unibas.ristorante.persistenza.IDAOArchivio;
+import it.unibas.ristorante.vista.FinestraTabella;
 import it.unibas.ristorante.vista.Frame;
 import it.unibas.ristorante.vista.PannelloAggiungiAPietanza;
 import it.unibas.ristorante.vista.PannelloAggiungiAdArchivio;
@@ -33,6 +34,7 @@ public class Applicazione {
     private PannelloAggiungiAPietanza pannelloAggiungiAPietanza;
     private ControlloAggiungiAPietanza controlloAggiungiAPietanza;
     private DAOArchivio daoArchivioVero;
+    private FinestraTabella finetraTabella;
 
     private Applicazione() {
     }
@@ -53,11 +55,17 @@ public class Applicazione {
         this.pannelloPrincipale = new PannelloPrincipale();
         this.pannelloAggiungiAdArchivio = new PannelloAggiungiAdArchivio(frame, true);
         this.pannelloAggiungiAPietanza = new PannelloAggiungiAPietanza(frame, true);
+        this.finetraTabella = new FinestraTabella(frame, true);
+        this.finetraTabella.inizializza();
         this.pannelloAggiungiAPietanza.inizializza();
         this.pannelloAggiungiAdArchivio.inizializza();
         this.pannelloPrincipale.inizializza(); //occhio all ordine
         this.frame.inizializza();
 
+    }
+
+    public FinestraTabella getFinetraTabella() {
+        return finetraTabella;
     }
 
     public ControlloAggiungiAPietanza getControlloAggiungiAPietanza() {
