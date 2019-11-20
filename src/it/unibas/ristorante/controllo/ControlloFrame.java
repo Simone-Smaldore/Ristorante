@@ -26,6 +26,11 @@ public class ControlloFrame {
     private Action azioneHelp = new AzioneHelp();
     private Action azioneTrovaSimile = new AzioneTrovaCaloricamenteSimile();
     private Action azioneMostraPietanze = new AzioneMostraPietanze();
+    private Action azioneAggiungiPietanza = new AzioneAggiungiPietanza();
+
+    public Action getAzioneAggiungiPietanza() {
+        return azioneAggiungiPietanza;
+    }
 
     public Action getAzioneMostraPietanze() {
         return azioneMostraPietanze;
@@ -47,6 +52,23 @@ public class ControlloFrame {
         return azioneTrovaSimile;
     }
 
+    private class AzioneAggiungiPietanza extends AbstractAction {
+
+        public AzioneAggiungiPietanza() {
+            this.putValue(NAME, "Aggiungi pietanza all'archvio");
+            this.putValue(SHORT_DESCRIPTION, "Aggiunge una pietanza all'archivio");
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl + A"));
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_A);
+            this.setEnabled(false);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Applicazione.getInstance().getFinestraAggiungiPietanza().visualizza();
+        }
+
+    }
+
     private class AzioneMostraPietanze extends AbstractAction {
 
         public AzioneMostraPietanze() {
@@ -60,7 +82,7 @@ public class ControlloFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBean(Costanti.ARCHIVIO);
-            if(archivio.getNumeroPietanze() == 0) {
+            if (archivio.getNumeroPietanze() == 0) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrori("Non ci sono pietanze da mostrare nell'archivio");
                 return;
             }
@@ -133,6 +155,7 @@ public class ControlloFrame {
                     Applicazione.getInstance().getModello().addBean(Costanti.ARCHIVIO, archivio);
                     Applicazione.getInstance().getPannelloPrincipale().abilitaComponenti();
                     Applicazione.getInstance().getFrame().abilitaMostraPietanze();
+                    Applicazione.getInstance().getFrame().abilitaAggiungiPietanza();
                 } catch (DAOException ex) {
                     Applicazione.getInstance().getFrame().mostraMessaggioErrori("Problemi con il caricamento");
                 }

@@ -2,12 +2,14 @@ package it.unibas.ristorante;
 
 import it.unibas.ristorante.controllo.ControlloAggiungiAPietanza;
 import it.unibas.ristorante.controllo.ControlloAggiungiAdArchivio;
+import it.unibas.ristorante.controllo.ControlloFinestraAggiungiPietanza;
 import it.unibas.ristorante.controllo.ControlloFrame;
 import it.unibas.ristorante.controllo.ControlloPannelloPrincipale;
 import it.unibas.ristorante.modello.Modello;
 import it.unibas.ristorante.persistenza.DAOArchivio;
 import it.unibas.ristorante.persistenza.DAOArchivioMock;
 import it.unibas.ristorante.persistenza.IDAOArchivio;
+import it.unibas.ristorante.vista.FinestraAggiungiPietanza;
 import it.unibas.ristorante.vista.FinestraTabella;
 import it.unibas.ristorante.vista.Frame;
 import it.unibas.ristorante.vista.PannelloAggiungiAPietanza;
@@ -35,6 +37,8 @@ public class Applicazione {
     private ControlloAggiungiAPietanza controlloAggiungiAPietanza;
     private DAOArchivio daoArchivioVero;
     private FinestraTabella finetraTabella;
+    private FinestraAggiungiPietanza finestraAggiungiPietanza;
+    private ControlloFinestraAggiungiPietanza controlloFinestraAggiungiPietanza;
 
     private Applicazione() {
     }
@@ -56,12 +60,24 @@ public class Applicazione {
         this.pannelloAggiungiAdArchivio = new PannelloAggiungiAdArchivio(frame, true);
         this.pannelloAggiungiAPietanza = new PannelloAggiungiAPietanza(frame, true);
         this.finetraTabella = new FinestraTabella(frame, true);
+        this.finestraAggiungiPietanza = new FinestraAggiungiPietanza(frame, true);
+        this.controlloAggiungiAPietanza = new ControlloAggiungiAPietanza();
+        this.controlloFinestraAggiungiPietanza = new ControlloFinestraAggiungiPietanza();
+        this.finestraAggiungiPietanza.inizializza();
         this.finetraTabella.inizializza();
         this.pannelloAggiungiAPietanza.inizializza();
         this.pannelloAggiungiAdArchivio.inizializza();
         this.pannelloPrincipale.inizializza(); //occhio all ordine
         this.frame.inizializza();
 
+    }
+
+    public FinestraAggiungiPietanza getFinestraAggiungiPietanza() {
+        return finestraAggiungiPietanza;
+    }
+
+    public ControlloFinestraAggiungiPietanza getControlloFinestraAggiungiPietanza() {
+        return controlloFinestraAggiungiPietanza;
     }
 
     public FinestraTabella getFinetraTabella() {

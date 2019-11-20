@@ -47,3 +47,9 @@ build/classes/it/unibas/ristorante/controllo/ControlloFrame$AzioneMostraPietanze
 build/classes/it/unibas/ristorante/vista/FinestraTabella.class
 build/classes/it/unibas/ristorante/vista/FinestraTabella.form
 build/classes/it/unibas/ristorante/vista/ModelloTabella.class
+build/classes/it/unibas/ristorante/controllo/ControlloFinestraAggiungiPietanza$AzioneAggiungi.class
+build/classes/it/unibas/ristorante/controllo/ControlloFinestraAggiungiPietanza.class
+build/classes/it/unibas/ristorante/controllo/ControlloFrame$AzioneAggiungiPietanza.class
+build/classes/it/unibas/ristorante/vista/FinestraAggiungiPietanza.class
+build/classes/it/unibas/ristorante/vista/FinestraAggiungiPietanza.form
+build/classes/it/unibas/ristorante/vista/ModelloTabellaPietanze.class

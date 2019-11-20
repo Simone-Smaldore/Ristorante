@@ -91,6 +91,7 @@ public class ControlloPannelloPrincipale {
                 return;
             }
             Applicazione.getInstance().getModello().addBean(Costanti.PIETANZA_CORRENTE, pietanzaTrovata);
+            Applicazione.getInstance().getModello().addBean(Costanti.PIETANZA_DA_AGGIUNGERE_INGREDIENTE, pietanzaTrovata);
             Applicazione.getInstance().getPannelloPrincipale().settaPietanza(pietanzaTrovata.getNome(), pietanzaTrovata.contieneAllergeni(), pietanzaTrovata.getCosto());
             Applicazione.getInstance().getPannelloPrincipale().abilitaBottoneAggiungiAPietanza();
             Applicazione.getInstance().getFrame().abilitaMenuTrova();

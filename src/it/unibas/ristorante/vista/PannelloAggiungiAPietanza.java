@@ -50,7 +50,7 @@ public class PannelloAggiungiAPietanza extends javax.swing.JDialog {
     }
 
     private void initNameComponents() {
-        Pietanza pietanza = (Pietanza) Applicazione.getInstance().getModello().getBean(Costanti.PIETANZA_CORRENTE);
+        Pietanza pietanza = (Pietanza) Applicazione.getInstance().getModello().getBean(Costanti.PIETANZA_DA_AGGIUNGERE_INGREDIENTE);
         this.jLabelNome.setText(pietanza.getNome());
         this.jLabelAllergeni.setText(pietanza.contieneAllergeni() ? "presenti" : "non presenti");
         this.jLabelCosto.setText("" + pietanza.getCosto());

@@ -14,7 +14,7 @@ import javax.swing.table.TableModel;
  *
  * @author Simone
  */
-public class ModelloTabella extends AbstractTableModel {
+public class ModelloTabellaPietanze extends AbstractTableModel {
 
     private List<Pietanza> listaPietanze;
 
@@ -22,7 +22,7 @@ public class ModelloTabella extends AbstractTableModel {
         this.listaPietanze = listaPietanze;
     }
 
-    public ModelloTabella() {
+    public ModelloTabellaPietanze() {
     }
 
     @Override

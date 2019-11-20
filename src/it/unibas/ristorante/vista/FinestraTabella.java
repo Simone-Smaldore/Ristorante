@@ -32,7 +32,7 @@ public class FinestraTabella extends javax.swing.JDialog {
     }
 
     public void initTable() {
-        this.jTable1.setModel(new ModelloTabella());
+        this.jTable1.setModel(new ModelloTabellaPietanze());
     }
 
     public void visualizza() {
@@ -40,7 +40,7 @@ public class FinestraTabella extends javax.swing.JDialog {
     }
 
     public void aggiornaTabella() {
-        ModelloTabella modello = (ModelloTabella) this.jTable1.getModel();
+        ModelloTabellaPietanze modello = (ModelloTabellaPietanze) this.jTable1.getModel();
         List<Pietanza> pietanze = (List<Pietanza>) Applicazione.getInstance().getModello().getBean(Costanti.LISTA_PIETANZE);
         modello.setListaPietanze(pietanze);
         modello.aggiorna();

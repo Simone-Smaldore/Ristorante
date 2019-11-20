@@ -42,6 +42,7 @@ public class Frame extends javax.swing.JFrame {
         jMenuItemCarica = new javax.swing.JMenuItem();
         jMenuItemTrovaCaloricamenteSimile = new javax.swing.JMenuItem();
         jMenuItemMostraPietanze = new javax.swing.JMenuItem();
+        jMenuItemAggiungiPietanza = new javax.swing.JMenuItem();
         jMenuHelp = new javax.swing.JMenu();
         jMenuItemHelp = new javax.swing.JMenuItem();
 
@@ -60,6 +61,9 @@ public class Frame extends javax.swing.JFrame {
 
         jMenuItemMostraPietanze.setText("Mostra Pietanze");
         jMenuFile.add(jMenuItemMostraPietanze);
+
+        jMenuItemAggiungiPietanza.setText("jMenuItem1");
+        jMenuFile.add(jMenuItemAggiungiPietanza);
 
         jMenuBar1.add(jMenuFile);
 
@@ -90,6 +94,7 @@ public class Frame extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuEsci;
     private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenu jMenuHelp;
+    private javax.swing.JMenuItem jMenuItemAggiungiPietanza;
     private javax.swing.JMenuItem jMenuItemCarica;
     private javax.swing.JMenuItem jMenuItemHelp;
     private javax.swing.JMenuItem jMenuItemMostraPietanze;
@@ -102,10 +107,15 @@ public class Frame extends javax.swing.JFrame {
         this.jMenuItemCarica.setAction(Applicazione.getInstance().getControlloFrame().getAzioneCarica());
         this.jMenuItemTrovaCaloricamenteSimile.setAction(Applicazione.getInstance().getControlloFrame().getAzioneTrovaSimile());
         this.jMenuItemMostraPietanze.setAction(Applicazione.getInstance().getControlloFrame().getAzioneMostraPietanze());
+        this.jMenuItemAggiungiPietanza.setAction(Applicazione.getInstance().getControlloFrame().getAzioneAggiungiPietanza());
     }
     
     public void abilitaMostraPietanze() {
         this.jMenuItemMostraPietanze.setEnabled(true);
+    }
+    
+    public void abilitaAggiungiPietanza() {
+        this.jMenuItemAggiungiPietanza.setEnabled(true);
     }
 
     public void abilitaMenuTrova() {
