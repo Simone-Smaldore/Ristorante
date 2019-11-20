@@ -47,6 +47,7 @@ public class ControlloAggiungiAPietanza {
                 Applicazione.getInstance().getPannelloAggiungiAPietanza().mostraMessaggioErrore(errori);
                 return;
             }
+            numQuantita = Integer.parseInt(quantita);
             pietanza.addIngrediente(new IngredienteQuantita(numQuantita, ingrediente));
             Applicazione.getInstance().getPannelloAggiungiAPietanza().setVisible(false);
 
